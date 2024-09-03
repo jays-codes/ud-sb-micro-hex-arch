@@ -4,6 +4,15 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 - initial repo commit
 
 proj: fos (food ordering system)
+- created project modules: 
+  - order-service
+    - order-domain
+      - order-domain-core
+      - order-application-service
+    - order-application
+    - order-dataaccess
+    - order-messaging
+    - order-container
 - created main fos project plus module hierarchy
 
 proj: infra
