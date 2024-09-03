@@ -31,7 +31,33 @@
   </properties>
 
   <dependencyManagement>
-    
+    <dependencies>
+      <dependency>
+        <groupId>jayslabs.msrvcs</groupId>
+        <artifactId>order-domain-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jayslabs.msrvcs</groupId>
+        <artifactId>order-application-service</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jayslabs.msrvcs</groupId>
+        <artifactId>order-application</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jayslabs.msrvcs</groupId>
+        <artifactId>order-dataaccess</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jayslabs.msrvcs</groupId>
+        <artifactId>order-messaging</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
   </dependencyManagement>
 
   <dependencies>

@@ -10,7 +10,14 @@
     </parent>
 
     <artifactId>order-dataaccess</artifactId>
+
     <properties>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>jayslabs.msrvcs</groupId>
+            <artifactId>order-application-service</artifactId>
+        </dependency>
+    </dependencies>
 </project>
