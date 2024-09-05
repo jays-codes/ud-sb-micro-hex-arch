@@ -48546,6 +48546,14 @@
         </dependency>
       </dependencies>
     </dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>jayslabs.msrvcs</groupId>
+        <artifactId>order-application-service</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <scope>compile</scope>
+      </dependency>
+    </dependencies>
     <repositories>
       <repository>
         <snapshots>
