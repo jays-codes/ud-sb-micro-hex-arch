@@ -11,6 +11,9 @@ public class Money {
     private final Currency currency;
 
     public Money(BigDecimal amount, Currency currency) {
+        if (amount == null || currency == null) {
+            throw new IllegalArgumentException("Amount and currency cannot be null");
+        }
         this.amount = amount;
         this.currency = currency;
     }
@@ -28,7 +31,7 @@ public class Money {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Money money = (Money) o;
-        return Objects.equals(amount, money.amount) && Objects.equals(currency, money.currency);
+        return amount.compareTo(money.amount) == 0 && currency.equals(money.currency);
     }
 
     @Override
@@ -38,6 +41,9 @@ public class Money {
 
     //add Money applying setScale
     public Money add(Money other) {
+        if (other == null) {
+            throw new IllegalArgumentException("Other money cannot be null");
+        }
         if (!currency.equals(other.currency)) {
             throw new IllegalArgumentException("Currencies do not match");
         }
@@ -46,6 +52,9 @@ public class Money {
 
     //subtract Money applying setScale
     public Money subtract(Money other) {
+        if (other == null) {
+            throw new IllegalArgumentException("Other money cannot be null");
+        }
         if (!currency.equals(other.currency)) {
             throw new IllegalArgumentException("Currencies do not match");
         }
@@ -65,6 +74,9 @@ public class Money {
 
     //isGreaterThan
     public boolean isGreaterThan(Money other) {
+        if (other == null) {
+            throw new IllegalArgumentException("Other money cannot be null");
+        }
         return this.amount.compareTo(other.amount) > 0;
     }
 
