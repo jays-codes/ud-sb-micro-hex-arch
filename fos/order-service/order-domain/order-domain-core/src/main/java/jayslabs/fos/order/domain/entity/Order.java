@@ -10,6 +10,7 @@ import jayslabs.fos.domain.vo.Money;
 import jayslabs.fos.domain.vo.OrderId;
 import jayslabs.fos.domain.vo.OrderStatus;
 import jayslabs.fos.domain.vo.RestaurantId;
+import jayslabs.fos.order.domain.vo.OrderItemId;
 import jayslabs.fos.order.domain.vo.TrackingId;
 
 public class Order extends BaseEntity<OrderId> {
@@ -107,5 +108,14 @@ public class Order extends BaseEntity<OrderId> {
         trackingId = new TrackingId(UUID.randomUUID());
         orderStatus = OrderStatus.PENDING;
         failureMessages = new ArrayList<>();
+        initializeOrderItems();
+    }
+
+    // initialize order items with order id and order item id
+    private void initializeOrderItems() {
+        long itemId = 1;
+        for (OrderItem item : items) {
+            item.initializeOrderItem(super.getId(), new OrderItemId(itemId++));
+        }
     }
 }
