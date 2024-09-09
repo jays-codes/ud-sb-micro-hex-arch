@@ -1,10 +1,9 @@
 //abstract base entity typed for id with generic type
 package jayslabs.fos.domain.entity;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class BaseEntity<ID extends Serializable> {
+public abstract class BaseEntity<ID> {
     private ID id;
 
     public ID getId() {
