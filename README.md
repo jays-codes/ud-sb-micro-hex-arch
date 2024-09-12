@@ -4,7 +4,8 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 - initial repo commit
 
 proj: fos (food ordering system)
-- started validateOder()
+- implemented validateOrder() (order); DomainException (common), OrderDomainException (order); validateInitializeOrder(), validateTotalPrice(), validateItemsPrice(), validateItemPrice(), isPriceValid() (orderItem)
+- started validateOder(); added ZERO to money vo
 - implemented Order methods: initializeOrder(), initializeOrderItems(OrderId, OrderItemId); initializeOrderItem() in OrderItem 
 - Applied Builder design pattern for OrderItem, Order entity; Created Product vo;
 - created java packages jayslabs.fos.order.domain.* (entity, vo, exception, event); StreetAddress vo; Started on Order Aggregate Root Class

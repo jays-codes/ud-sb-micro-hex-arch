@@ -10,6 +10,8 @@ public class Money {
     private final BigDecimal amount;
     private final Currency currency;
 
+    public static final Money ZERO = new Money(BigDecimal.ZERO, Currency.getInstance("CAD"));
+
     public Money(BigDecimal amount, Currency currency) {
         if (amount == null || currency == null) {
             throw new IllegalArgumentException("Amount and currency cannot be null");

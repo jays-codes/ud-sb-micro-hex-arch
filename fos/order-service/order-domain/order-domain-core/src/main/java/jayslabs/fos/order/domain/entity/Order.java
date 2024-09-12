@@ -10,6 +10,7 @@ import jayslabs.fos.domain.vo.Money;
 import jayslabs.fos.domain.vo.OrderId;
 import jayslabs.fos.domain.vo.OrderStatus;
 import jayslabs.fos.domain.vo.RestaurantId;
+import jayslabs.fos.order.domain.exception.OrderDomainException;
 import jayslabs.fos.order.domain.vo.OrderItemId;
 import jayslabs.fos.order.domain.vo.TrackingId;
 
@@ -120,7 +121,7 @@ public class Order extends BaseEntity<OrderId> {
     }
 
     public void validateOrder() {
-        //validateInitialOrder();
+        validateInitialOrder();
         validateTotalPrice();
         validateItemsPrice();
         // validateWithRestaurantMenu();
@@ -132,17 +133,41 @@ public class Order extends BaseEntity<OrderId> {
         // validateOrderItemsQuantityWithRestaurant();
     }
 
-    private void validateItemsPrice() {
-        if (items == null || items.isEmpty()) {
-            throw new IllegalStateException("Invalid items: " + items);
+    private void validateInitialOrder() {
+        //check orderstatus is null
+        if (orderStatus != null) {
+            throw new OrderDomainException("Order is not in the correct state for initialization");
         }
     }
 
     private void validateTotalPrice() {
         if (price == null || !price.isGreaterThanZero()) {
-            throw new IllegalStateException("Invalid price: " + price);
+            throw new OrderDomainException("Total price must be greater than zero");
         }
     }
+
+    // validate items price with order price using stream and reduce. 
+    // validate item price using validateItemPrice()
+    private void validateItemsPrice() {
+        Money orderItemsTotal = items.stream().map(item -> {
+            validateItemPrice(item);
+            return item.getSubTotal();
+        }).reduce(Money.ZERO, Money::add);
+
+        if (!price.equals(orderItemsTotal)) {
+            throw new OrderDomainException("Total price: " + price.getAmount() 
+            + " is not equal to the order items total: " + orderItemsTotal.getAmount());
+        }
+    }
+
+    // validate item price using validateItemPrice()
+    private void validateItemPrice(OrderItem item) {
+        if (item.isPriceValid()==false) {
+            throw new OrderDomainException("Order item price is not valid");
+        }   
+    }
+
+
 
     
 

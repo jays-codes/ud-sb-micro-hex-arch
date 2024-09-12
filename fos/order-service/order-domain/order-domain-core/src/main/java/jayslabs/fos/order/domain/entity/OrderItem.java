@@ -88,4 +88,12 @@ public class OrderItem extends BaseEntity<OrderItemId> {
             return new OrderItem(this);
         }
     }
+
+    boolean isPriceValid() {
+        return 
+        price.isGreaterThanZero() &&
+        price.equals(product.getPrice()) &&
+        quantity > 0 &&
+        price.multiply(quantity).equals(subTotal);
+    }
 }
