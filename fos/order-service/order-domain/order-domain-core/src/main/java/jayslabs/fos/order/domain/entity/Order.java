@@ -118,4 +118,32 @@ public class Order extends BaseEntity<OrderId> {
             item.initializeOrderItem(super.getId(), new OrderItemId(itemId++));
         }
     }
+
+    public void validateOrder() {
+        //validateInitialOrder();
+        validateTotalPrice();
+        validateItemsPrice();
+        // validateWithRestaurantMenu();
+        // validateItemQuantityWithRestaurantMenu();
+        // validateRestaurantActive();
+        // validateOrderItemsPrice();
+        // validateOrderItemsQuantity();
+        // validateOrderItemsPriceWithRestaurant();
+        // validateOrderItemsQuantityWithRestaurant();
+    }
+
+    private void validateItemsPrice() {
+        if (items == null || items.isEmpty()) {
+            throw new IllegalStateException("Invalid items: " + items);
+        }
+    }
+
+    private void validateTotalPrice() {
+        if (price == null || !price.isGreaterThanZero()) {
+            throw new IllegalStateException("Invalid price: " + price);
+        }
+    }
+
+    
+
 }
