@@ -167,8 +167,46 @@ public class Order extends BaseEntity<OrderId> {
         }   
     }
 
+    public void pay() {
+        if (orderStatus != OrderStatus.PENDING) {
+            throw new OrderDomainException("Order is not in the correct state for payment");
+        }
+        orderStatus = OrderStatus.PAID;
+        trackingId = new TrackingId(UUID.randomUUID());
+    }
 
+    public void approve() {
+        if (orderStatus != OrderStatus.PAID) {
+            throw new OrderDomainException("Order is not in the correct state for approval");
+        }
+        orderStatus = OrderStatus.APPROVED;
+    }
 
-    
+    public void initCancel(List<String> failureMessages) {
+        if (orderStatus != OrderStatus.PAID) {
+            throw new OrderDomainException("Order is not in the correct state for initialization of cancellation");
+        }
+        orderStatus = OrderStatus.CANCELLING;
+        updateFailureMessages(failureMessages);
+    }
 
+    //if orderstatus is pending or cancelling, cancel the order
+    public void cancel() {
+        if (orderStatus != OrderStatus.PENDING || orderStatus != OrderStatus.CANCELLING) {
+            throw new OrderDomainException("Order is not in the correct state for cancellation");
+        }
+        orderStatus = OrderStatus.CANCELLED;
+        trackingId = null;
+    }
+
+    //update failure messages using stream to filter out empty messages
+    //if failure messages is null, then set it to the parameter failure messages
+    //if failure messages is not null, then add the parameter failure messages to the existing failure messages
+    private void updateFailureMessages(List<String> failureMessages) {
+        if (this.failureMessages == null) {
+            this.failureMessages = new ArrayList<>();
+        }
+        this.failureMessages.addAll(failureMessages.stream()
+        .filter(message -> !message.isEmpty()).toList());
+    }   
 }

@@ -4,6 +4,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 - initial repo commit
 
 proj: fos (food ordering system)
+- implemented Order state related methods: pay(), approve(), cancel(), initCancel() and updateFailureMessages(); 
 - implemented validateOrder() (order); DomainException (common), OrderDomainException (order); validateInitializeOrder(), validateTotalPrice(), validateItemsPrice(), validateItemPrice(), isPriceValid() (orderItem)
 - started validateOder(); added ZERO to money vo
 - implemented Order methods: initializeOrder(), initializeOrderItems(OrderId, OrderItemId); initializeOrderItem() in OrderItem 
