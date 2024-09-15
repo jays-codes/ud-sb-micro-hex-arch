@@ -4,6 +4,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 - initial repo commit
 
 proj: fos (food ordering system)
+- created Restaurant entity in order-domain-core, entity package; Product list, active flag, constructor using Builder pattern (Builder static inner class, builder method and constructor)
 - created Customer entity in order-domain-core, entity package
 - implemented Order state related methods: pay(), approve(), cancel(), initCancel() and updateFailureMessages(); 
 - implemented validateOrder() (order); DomainException (common), OrderDomainException (order); validateInitializeOrder(), validateTotalPrice(), validateItemsPrice(), validateItemPrice(), isPriceValid() (orderItem)

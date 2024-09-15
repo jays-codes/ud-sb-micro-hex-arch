@@ -124,13 +124,6 @@ public class Order extends BaseEntity<OrderId> {
         validateInitialOrder();
         validateTotalPrice();
         validateItemsPrice();
-        // validateWithRestaurantMenu();
-        // validateItemQuantityWithRestaurantMenu();
-        // validateRestaurantActive();
-        // validateOrderItemsPrice();
-        // validateOrderItemsQuantity();
-        // validateOrderItemsPriceWithRestaurant();
-        // validateOrderItemsQuantityWithRestaurant();
     }
 
     private void validateInitialOrder() {
