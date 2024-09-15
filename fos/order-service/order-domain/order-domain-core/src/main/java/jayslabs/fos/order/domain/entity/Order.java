@@ -184,12 +184,12 @@ public class Order extends BaseEntity<OrderId> {
     }
 
     //if orderstatus is pending or cancelling, cancel the order
-    public void cancel() {
+    public void cancel(List<String> failureMessages) {
         if (orderStatus != OrderStatus.PENDING || orderStatus != OrderStatus.CANCELLING) {
             throw new OrderDomainException("Order is not in the correct state for cancellation");
         }
         orderStatus = OrderStatus.CANCELLED;
-        trackingId = null;
+        updateFailureMessages(failureMessages);
     }
 
     //update failure messages using stream to filter out empty messages

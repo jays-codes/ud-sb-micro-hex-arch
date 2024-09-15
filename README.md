@@ -4,6 +4,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 - initial repo commit
 
 proj: fos (food ordering system)
+- Implemented Domain Service Interface: OrderDomainServiceImpl; added logging
 - created OrderDomainService interface in order-domain-core, service package: validateAndInitiateOrder(), payOrder(), approveOrder(), cancelOrderPayment(), cancelOrder()
 - created event classes: OrderCreatedEvent, OrderPaidEvent, OrderCancelledEvent, OrderEvent in order-domain-core, event package
 - created Restaurant entity in order-domain-core, entity package; Product list, active flag, constructor using Builder pattern (Builder static inner class, builder method and constructor)
