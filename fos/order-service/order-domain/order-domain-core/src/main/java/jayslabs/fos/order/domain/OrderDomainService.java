@@ -1,4 +1,4 @@
-package jayslabs.fos.order.domain.service;
+package jayslabs.fos.order.domain;
 
 import java.util.List;
 
