@@ -4,6 +4,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 - initial repo commit
 
 proj: fos (food ordering system)
+- modified Order Application Service (order domain -> order application service) sub-module: added pom dependency: spring-tx, spring-validation, common-domain; created dto packages: create, message, track; created create order dtos: CreateOrderCommand, CreateOrderResponse, OrderAddressDTO, OrderItemDTO
 - Implemented Domain Service Interface: OrderDomainServiceImpl; added logging
 - created OrderDomainService interface in order-domain-core, service package: validateAndInitiateOrder(), payOrder(), approveOrder(), cancelOrderPayment(), cancelOrder()
 - created event classes: OrderCreatedEvent, OrderPaidEvent, OrderCancelledEvent, OrderEvent in order-domain-core, event package
