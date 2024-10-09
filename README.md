@@ -4,6 +4,7 @@ Jay's proj repo for Microservices with SpringBoot, Docker, Kubernetes training (
 - initial repo commit
 
 proj: fos (food ordering system)
+- implemented Create Order flow: OrderApplicationServiceImpl (createOrder()), OrderCreateCommandHandler (createOrder(), checkCustomer(), checkRestaurant(), saveOrder()), OrderMapper(createOrderCommandToOrder(), orderToCreateOrderResponse(), orderAddressToStreetAddress()), OrderDomainServiceImpl (validateAndInitiateOrder(), validateRestaurant()), OrderRepository (save()), OrderCreatedEvent, return -> CreateOrderResponse
 - started implementing input ports: OrderApplicationServiceImpl, OrderTrackCommandHandler, OrderCreateCommandHandler
 - created base DomainEventPublisher interface in common-domain module; create message publisher interfaces in ports.output.message.publisher (OAS): OrderCreatedPaymentRequestMessagePublisher, OrderCancelledPaymentRequestMessagePublisher, OrderedPaidRestaurantRequestMessagePublisher
 - create input ports: OrderApplicationService, PaymentResponseMessageListener, RestaurantApprovalResponseMessageListener; create output ports: OrderRepository, CustomerRepository, RestaurantRepository, PaymentResponseMessagePublisher, RestaurantApprovalResponseMessagePublisher; 
